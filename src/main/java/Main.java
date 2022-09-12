@@ -55,7 +55,7 @@ public class Main {
 
         System.out.println(superhero1.toString());
         for (int i = 0; i < d.superheroData.length; i++) {
-            System.out.println("Her printer jeg din liste ud = ");
+            System.out.println("Her kan du se resultatet for din superhero: ");
             System.out.println(d.superheroData[i]);
         }
 
