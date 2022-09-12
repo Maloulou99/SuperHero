@@ -15,13 +15,14 @@ public class Main {
         d.superheroData[1] = superhero1;
         d.superheroData[2] = superhero1;
 
-        System.out.println("Hvad hedder din superhelt?");
+        //Kan man lave en boolean til dette spørgsmål?
+        System.out.println("Har din superhelts et aliasnavn? indtast her: Skriv nej hvis ikke");
         String aliasNavn = sc.nextLine();
         superhero1.setAliasNavn(aliasNavn);
         System.out.println(superhero1.getAliasNavn());
 
-        //Kan man lave en boolean til dette spørgsmål?
-        System.out.println("Har din superhelt et andet navn, indtast her? Skriv nej hvis ikke");
+
+        System.out.println("Har din superhelt et  superhelte navn? indtast her: Skriv nej hvis ikke");
         String superNavn = sc.nextLine();
         superhero1.setSuperNavn(superNavn);
 
