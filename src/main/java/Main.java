@@ -1,4 +1,6 @@
+import java.io.SyncFailedException;
 import java.util.Scanner;
+import java.util.regex.PatternSyntaxException;
 
 public class Main {
 
@@ -8,7 +10,7 @@ public class Main {
         System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
         Database datebase = new Database();
         int brugerSvar = 0;
-
+        boolean værdi = false;
         do {
             System.out.println("""
                     Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!
@@ -23,14 +25,13 @@ public class Main {
             input.nextLine();
 
             if (brugerSvar == 1) {
+
                 System.out.println("Indtast din superhelts superhelte navn her: ");
                 String aliasNavn = input.nextLine();
                 System.out.println("Hvis din superhelt har et menneske navn så indtast her eller tryk ENTER for at gå videre: ");
                 String superNavn = input.nextLine();
                 System.out.println("Hvad er din superhelts superkraft?");
                 String superkraft = input.nextLine();
-                System.out.println("Hvornår blev din superhelt skabt?");
-                int oprindelsesÅr = input.nextInt();
                 System.out.println("Er din superhelt et menneske? Skriv 'Ja' eller 'Nej'");
                 String svar;
                 svar = input.nextLine();
