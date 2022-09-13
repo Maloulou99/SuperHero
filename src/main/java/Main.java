@@ -7,58 +7,66 @@ public class Main {
 
         System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
         Scanner sc = new Scanner(System.in);
-        Superhero superhero1 = new Superhero();
 
-        Database d = new Database();
-
-        d.superheroData[0] = superhero1;
-        d.superheroData[1] = superhero1;
-        d.superheroData[2] = superhero1;
-
-        //Kan man lave en boolean til dette spørgsmål?
-        System.out.println("Har din superhelts et aliasnavn? indtast her: Skriv nej hvis ikke");
-        String aliasNavn = sc.nextLine();
-        superhero1.setAliasNavn(aliasNavn);
-        System.out.println(superhero1.getAliasNavn());
+        Database datebase = new Database();
+        //Tilføj superheros til hvert spørgsmål
 
 
-        System.out.println("Har din superhelt et  superhelte navn? indtast her: Skriv nej hvis ikke");
-        String superNavn = sc.nextLine();
-        superhero1.setSuperNavn(superNavn);
+        for (int i = 0; i < datebase.getSuperheros().length; i++) {
 
 
-        System.out.println("Hvad er din superhelts superkraft?");
-        String superkraft = sc.nextLine();
-        superhero1.setSuperkraft(superkraft);
-        System.out.println(superhero1.getSuperNavn());
+            //Kan man lave en boolean til dette spørgsmål?
+            System.out.println("Har din superhelts et aliasnavn? indtast her: Skriv nej hvis ikke");
+            String aliasNavn = sc.nextLine();
 
-        System.out.println("Er din superhelt et menneske?");
-        String svar;
-        svar = sc.nextLine();
-        boolean menneske;
-        if (svar.equalsIgnoreCase("ja")) {
-            menneske = true;
-        } else if (svar.equalsIgnoreCase("nej")) {
-            menneske = false;
+
+
+            System.out.println("Har din superhelt et  superhelte navn? indtast her: Skriv nej hvis ikke");
+            String superNavn = sc.nextLine();
+
+
+
+            System.out.println("Hvad er din superhelts superkraft?");
+            String superkraft = sc.nextLine();
+
+
+
+            System.out.println("Er din superhelt et menneske?");
+            String svar;
+            svar = sc.nextLine();
+            boolean menneske = false;
+            if (svar.equalsIgnoreCase("ja")) {
+                menneske = true;
+            } else if (svar.equalsIgnoreCase("nej")) {
+                menneske = false;
+            }
+
+            System.out.println("Hvornår blev din superhelt skabt?");
+            int oprindelsesÅr = sc.nextInt();
+
+            System.out.println("Hvor stærk er din superhelt fra 0-100?");
+            double styrke = sc.nextDouble();
+            //Scannerbug
+            //TODO Scannerbug
+            sc.nextLine();
+
+            datebase.tilføjSuperhelt(aliasNavn, superNavn,superkraft, menneske, oprindelsesÅr, styrke );
+
+
+            /*for (int  = 0; i < datebase.getSuperheros().length; i++) {
+                System.out.println("Her kan du se resultatet for din superhero: ");
+                System.out.println(datebase.getSuperheros()[i]);
+            }*/
+            for(Superhero superhero : datebase.getSuperheros()){
+                //TODO TJEK Comparision Operators / == Resultat skal være null, != hvis det er null
+                if(superhero != null){
+                    System.out.println("Her kan du se resultatet for din superhero: ");
+                    System.out.println(superhero);
+                    System.out.println();
+                }
+
+            }
         }
-
-        System.out.println("Hvornår blev din superhelt skabt?");
-        int oprindelsesÅr = sc.nextInt();
-        superhero1.setOprindelsesÅr(oprindelsesÅr);
-        System.out.println(superhero1.getOprindelsesÅr());
-
-        System.out.println("Hvor stærk er din superhelt fra 0-100?");
-        double styrke = sc.nextDouble();
-        superhero1.setStyrke(styrke);
-        System.out.println(superhero1.getStyrke());
-
-
-        System.out.println(superhero1.toString());
-        for (int i = 0; i < d.superheroData.length; i++) {
-            System.out.println("Her kan du se resultatet for din superhero: ");
-            System.out.println(d.superheroData[i]);
-        }
-
     }
 }
 
