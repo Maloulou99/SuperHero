@@ -8,40 +8,30 @@ public class Main {
         System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
         Database datebase = new Database();
         int brugerSvar = 0;
+
         do {
             System.out.println("""
                     Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!
                     1. Opret superhelt
                     2. Udskriv alle superhelte
-                    9. Afslut    
+                    3. Afslut    
                         """);
 
-            //Denne metode opretter vi en scanner til at instensiere inputtene
+            //Denne metode opretter vi en scanner til at kunne få input fra brugeren
             Scanner input = new Scanner(System.in);
             brugerSvar = input.nextInt();
             input.nextLine();
 
             if (brugerSvar == 1) {
-                System.out.println("Indtast Super-helte navnet på din superhelt");
-                String navn = input.nextLine();
-                System.out.println("Hvis din superhelt har et menneske navn så indtast det her, ellers skriv ingen");
-                String superNavn = input.nextLine();
-                System.out.println("Er din helt et menneske? Svar Ja/nej");
-                boolean erMenneske = false;
-                String svar = input.next();
-                if (svar.equalsIgnoreCase("Ja")) {
-                    erMenneske = true;
-                } else if (svar.equalsIgnoreCase("Nej")) {
-                    erMenneske = false;
-                }
-                //for (int i = 0; i < datebase.superheros().length; i++) {
-                System.out.println("Har din superhelts et aliasnavn? indtast her: Skriv nej hvis ikke");
+                System.out.println("Indtast din superhelts superhelte navn her: ");
                 String aliasNavn = input.nextLine();
-                System.out.println("Har din superhelt et  superhelte navn? indtast her: Skriv nej hvis ikke");
+                System.out.println("Hvis din superhelt har et menneske navn så indtast her eller tryk ENTER for at gå videre: ");
                 String superNavn = input.nextLine();
                 System.out.println("Hvad er din superhelts superkraft?");
                 String superkraft = input.nextLine();
-                System.out.println("Er din superhelt et menneske?");
+                System.out.println("Hvornår blev din superhelt skabt?");
+                int oprindelsesÅr = input.nextInt();
+                System.out.println("Er din superhelt et menneske? Skriv 'Ja' eller 'Nej'");
                 String svar;
                 svar = input.nextLine();
                 boolean menneske = false;
@@ -50,42 +40,42 @@ public class Main {
                 } else if (svar.equalsIgnoreCase("nej")) {
                     menneske = false;
                 }
-                System.out.println("Hvornår blev din superhelt skabt?");
-                int oprindelsesÅr = input.nextInt();
-                System.out.println("Hvor stærk er din superhelt? Skriv antallet her: ");
-                double styrke = input.nextDouble();
                 //Scannerbug
                 //TODO Scannerbug
                 input.nextLine();
 
-                datebase.tilføjSuperhelt(aliasNavn, superNavn, superkraft, menneske, oprindelsesÅr, styrke);
+                System.out.println("Hvor stærk er din superhelt? Skriv antallet her: ");
+                double styrke = input.nextDouble();
 
+               // datebase.tilføjSuperhelt(aliasNavn, superNavn, superkraft, menneske, oprindelsesÅr, styrke);
 
-                //for (int  = 0; i < datebase.getSuperheros().length;) {
+            } else if (brugerSvar == 2) {
+                System.out.println("Her kan du se resultatet for din superhero: ");
 
+               //TODO Jeg kan ikke kalde på denne forloop, da min metode ikke er omdøbt et navn, jeg vil gerne finde ud af om jeg kan printe listen  ud alligevel
 
-                for (Superhero superhero : datebase.getSuperheros()) {
-                    System.out.println("Her kan du se resultatet for din superhero: ");
+                for (Superhero superheros : datebase.getSuperheros()) {
+                    System.out.println(superheros);
+                    // for (int = 0; i < datebase.getSuperheros().length;) {
                     System.out.println(datebase.getSuperheros());
                     //TODO TJEK Comparision Operators / == Resultat skal være null, != hvis det er null
-                    if (superhero != null) {
+                    if (superheros != null) {
                         System.out.println("Her kan du se resultatet for din superhero: ");
-                        System.out.println(superhero);
+                        System.out.println(superheros);
                         System.out.println();
-
-                    } else if (brugerSvar == 1) {
-                        for (Superhero superheroListe : datebase.getSuperheros()) {
-                            System.out.println(superheroListe);
-                        }
-                    }else{
+                    } else {
                         System.exit(0);
 
                     }
+
                 }
+
             }
-        }while (brugerSvar != 9) ;
+        } while (brugerSvar != 3) ;
     }
 }
+
+
 
 
 
