@@ -53,11 +53,11 @@ public class Superhero {
     @Override
     public String toString() {
         return "Superhero{" +
-                "aliasNavn='" + aliasNavn + '\'' +
-                ", superNavn='" + superNavn + '\'' +
-                ", superkraft='" + superkraft + '\'' +
-                ", erMenneske=" + erMenneske +
-                ", oprindelsesÅr=" + oprindelsesÅr +
+                "aliasNavn =" + aliasNavn + '\'' +
+                ", superNavn =" + superNavn + '\'' +
+                ", superkraft ='" + superkraft + '\'' +
+                ", erMenneske =" + erMenneske +
+                ", oprindelsesÅr =" + oprindelsesÅr +
                 ", styrke=" + styrke +
                 '}';
     }
