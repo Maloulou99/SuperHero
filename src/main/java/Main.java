@@ -7,22 +7,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
-        Database datebase = new Database();
-        int brugerSvar = 0;
-        boolean værdi = false;
+
         do {
-            System.out.println("""
-                    Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!
-                    1. Opret superhelt
-                    2. Udskriv alle superhelte
-                    3. Afslut    
-                        """);
+            System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
+            Database datebase = new Database();
+            int brugerSvar = 0;
 
             //Denne metode opretter vi en scanner til at kunne få input fra brugeren
             Scanner input = new Scanner(System.in);
             brugerSvar = input.nextInt();
-            input.nextLine();
+            String søgHelt;
+            boolean fundet = false;
+
+
+            System.out.println("""
+                    Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!
+                    1. Opret superhelt
+                    2. Udskriv alle superhelte
+                    3. Søg efter superhelt
+                    9. Afslut    
+                        """);
+
 
             if (brugerSvar == 1) {
 
@@ -44,39 +49,50 @@ public class Main {
                 //Scannerbug
                 //TODO Scannerbug
                 input.nextLine();
-
+                System.out.println("Hvornår var din superhelt skabt? ");
+                int oprindelsesÅr = input.nextInt();
                 System.out.println("Hvor stærk er din superhelt? Skriv antallet her: ");
                 double styrke = input.nextDouble();
 
-               // datebase.tilføjSuperhelt(aliasNavn, superNavn, superkraft, menneske, oprindelsesÅr, styrke);
+                // Kigger ind i min database "superheros", bruger min setmetode "tilfoejSuperhelt" med inputs
+                datebase.tilføjSuperhelt(aliasNavn, superNavn, superkraft, menneske, oprindelsesÅr, styrke);
 
-            } else if (brugerSvar == 2) {
-                System.out.println("Her kan du se resultatet for din superhero: ");
+                // TAST 2 - printer alle oprettede superhelte
+            }else if (brugerSvar == 2) {
 
-               //TODO Jeg kan ikke kalde på denne forloop, da min metode ikke er omdøbt et navn, jeg vil gerne finde ud af om jeg kan printe listen  ud alligevel
-
-                for (Superhero superheros : datebase.getSuperheros()) {
-                    System.out.println(superheros);
-                    // for (int = 0; i < datebase.getSuperheros().length;) {
-                    System.out.println(datebase.getSuperheros());
-                    //TODO TJEK Comparision Operators / == Resultat skal være null, != hvis det er null
-                    if (superheros != null) {
-                        System.out.println("Her kan du se resultatet for din superhero: ");
-                        System.out.println(superheros);
-                        System.out.println();
-                    } else {
-                        System.exit(0);
-
+                    for (Superhero superhelteListe : datebase.getSuperheros()) {
+                        System.out.println(superhelteListe);
                     }
-
                 }
+                // TAST 3 - Søger efter superhelt
+                else if(brugerSvar == 3) {
+                    System.out.println("Indtast navn du søger efter");
+                    søgHelt = input.next();
+                    Superhero værdi = datebase.søgSuperHero(søgHelt);
+                    if (værdi == null)
+                        System.out.println("Superhelten findes ikke i databasen");
+                    else System.out.println(værdi);
 
+                }else {
+                System.exit(0);
             }
-        } while (brugerSvar != 3) ;
+
+        }while (brugerSvar != 9) ;
     }
 }
 
 
 
+/*TODO Jeg kan ikke kalde på denne forloop, da min metode ikke er omdøbt et navn, jeg vil gerne finde ud af om jeg kan printe listen  ud alligevel
+
+        for (Superhero superheros : datebase.getSuperheros()) {
+        System.out.println(superheros);
+        // for (int = 0; i < datebase.getSuperheros().length;) {
+        System.out.println(datebase.getSuperheros());
+        //TODO TJEK Comparision Operators / == Resultat skal være null, != hvis det er null
+        if (superheros != null) {
+        System.out.println("Her kan du se resultatet for din superhero: ");
+        System.out.println(superheros);
+        System.out.println();
 
 
