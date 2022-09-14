@@ -7,17 +7,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-
+        //System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
+        Database datebase = new Database();
+        int brugerSvar;
         do {
-            System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
-            Database datebase = new Database();
-            int brugerSvar = 0;
-
-            //Denne metode opretter vi en scanner til at kunne få input fra brugeren
-            Scanner input = new Scanner(System.in);
-            brugerSvar = input.nextInt();
-            String søgHelt;
-            boolean fundet = false;
 
 
             System.out.println("""
@@ -27,6 +20,11 @@ public class Main {
                     3. Søg efter superhelt
                     9. Afslut    
                         """);
+                //Denne metode opretter vi en scanner til at kunne få input fra brugeren
+                     Scanner input = new Scanner(System.in);
+                     brugerSvar = input.nextInt();
+                     String søgHelt;
+                     boolean fundet = false;
 
 
             if (brugerSvar == 1) {
@@ -46,9 +44,6 @@ public class Main {
                 } else if (svar.equalsIgnoreCase("nej")) {
                     menneske = false;
                 }
-                //Scannerbug
-                //TODO Scannerbug
-                input.nextLine();
                 System.out.println("Hvornår var din superhelt skabt? ");
                 int oprindelsesÅr = input.nextInt();
                 System.out.println("Hvor stærk er din superhelt? Skriv antallet her: ");
@@ -58,29 +53,29 @@ public class Main {
                 datebase.tilføjSuperhelt(aliasNavn, superNavn, superkraft, menneske, oprindelsesÅr, styrke);
 
                 // TAST 2 - printer alle oprettede superhelte
-            }else if (brugerSvar == 2) {
+            } else if (brugerSvar == 2) {
 
-                    for (Superhero superhelteListe : datebase.getSuperheros()) {
-                        System.out.println(superhelteListe);
-                    }
+                for (Superhero superhelteListe : datebase.getSuperheros()) {
+                    System.out.println(superhelteListe);
                 }
-                // TAST 3 - Søger efter superhelt
-                else if(brugerSvar == 3) {
-                    System.out.println("Indtast navn du søger efter");
-                    søgHelt = input.next();
-                    Superhero værdi = datebase.søgSuperHero(søgHelt);
-                    if (værdi == null)
-                        System.out.println("Superhelten findes ikke i databasen");
-                    else System.out.println(værdi);
+            }
+            // TAST 3 - Søger efter superhelt
+            else if (brugerSvar == 3) {
+                System.out.println("Indtast navn du søger efter");
+                søgHelt = input.next();
+                Superhero værdi = datebase.søgSuperHero(søgHelt);
+                if (værdi == null)
+                    System.out.println("Superhelten findes ikke i databasen");
+                else System.out.println(værdi);
 
-                }else {
+            } else {
                 System.exit(0);
             }
 
-        }while (brugerSvar != 9) ;
+        } while (brugerSvar != 9);
     }
-}
 
+}
 
 
 /*TODO Jeg kan ikke kalde på denne forloop, da min metode ikke er omdøbt et navn, jeg vil gerne finde ud af om jeg kan printe listen  ud alligevel
@@ -93,6 +88,6 @@ public class Main {
         if (superheros != null) {
         System.out.println("Her kan du se resultatet for din superhero: ");
         System.out.println(superheros);
-        System.out.println();
+        System.out.println();*/
 
 
