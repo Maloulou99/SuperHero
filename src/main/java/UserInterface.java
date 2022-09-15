@@ -38,8 +38,8 @@ public class UserInterface {
                     findSuperhelt();
                 else if (brugerSvar == 3)
                     udskrivSuperhelt();
-                else if (brugerSvar == 4)
-                    retSuperhelt();
+                /*else if (brugerSvar == 4)
+                    retSuperhelt();*/
                 else if (brugerSvar == 9) ;
                 System.exit(9);
             }
@@ -86,11 +86,10 @@ public class UserInterface {
                         System.out.println(superhelteListe);
                     }
                 }
-                public void retSuperhelt () {
-
-                }
+                //public void retSuperhelt () {
 
             }
+
         }
     }
 }
