@@ -24,7 +24,6 @@ public class Main {
                      Scanner input = new Scanner(System.in);
                      brugerSvar = input.nextInt();
                      String søgHelt;
-                     boolean fundet = false;
 
 
             if (brugerSvar == 1) {
