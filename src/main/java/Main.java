@@ -9,23 +9,25 @@ public class Main {
 
         //System.out.println("Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!");
         Database datebase = new Database();
-        int brugerSvar;
-        do {
+        Scanner input = new Scanner(System.in);
+        int brugerSvar = 0;
 
+        do {
 
             System.out.println("""
                     Velkommen til Superhelte database! Her har du mulighed for at indtaste DIN superhelt!
                     1. Opret superhelt
                     2. Udskriv alle superhelte
                     3. Søg efter superhelt
+                    4. Ret i din superhelt
                     9. Afslut    
                         """);
-                //Denne metode opretter vi en scanner til at kunne få input fra brugeren
-                     Scanner input = new Scanner(System.in);
-                     brugerSvar = input.nextInt();
-                     String søgHelt;
 
+        } while (brugerSvar != 9);
+        //Denne metode opretter vi en scanner til at kunne få input fra brugeren
 
+        brugerSvar = input.nextInt();
+        String søgHelt;
             if (brugerSvar == 1) {
 
                 System.out.println("Indtast din superhelts superhelte navn her: ");
@@ -67,16 +69,21 @@ public class Main {
                     System.out.println("Superhelten findes ikke i databasen");
                 else System.out.println(værdi);
 
+
             } else {
                 System.exit(0);
             }
 
-        } while (brugerSvar != 9);
+
     }
 
 }
-
-
+//TODO en anden metode at sige til bruger, værdi findes ikke
+//boolean fundet = false;
+// for(Superhero s : superheros)
+//if (s.getnavn().contains(søgeNavn)){
+//søgeResultat.add(s)
+//System.out.println(Desværre findes ikke)
 /*TODO Jeg kan ikke kalde på denne forloop, da min metode ikke er omdøbt et navn, jeg vil gerne finde ud af om jeg kan printe listen  ud alligevel
 
         for (Superhero superheros : datebase.getSuperheros()) {

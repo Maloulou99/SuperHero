@@ -23,8 +23,19 @@ public class Database {
         }
         return null;
     }
-}
+    /*public int setretSuperHero(){
+        for(int i=0; i<superheros.size(); i++){
+            System.out.println(i+1 + ":" + superheros.get(i));
+        }*/
+    }
 
+
+//TODO Søge efter ooprettede superhelte som bliver listet i antal 1,2,3 osv..
+//for (Int i=0; i<søgeresultat.size(); i++) {
+//System.out.println(i+1 +":" + søgeResultat.get(i));}
+//Output: (Dette ser brugeren, listen med alle attributter bliver printet således:)
+//1: Superhelt 1 bliver printet ud
+//2: Superhelt 2 bliver printet ud
 
 
                 /* Kan også gøres sådan:
