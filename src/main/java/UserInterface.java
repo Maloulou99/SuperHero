@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class UserInterface {
     //Scanner input;
     UI ui = new UI();
@@ -95,20 +93,56 @@ public class UserInterface {
         for (Superhero superhelteListe : database.getSuperheros()) {
             System.out.println(superhelteListe);
         }else
-            System.out.println("Der findes ingen superhelte med indtastet information" + );
+            System.out.println("Der findes ingen superhelte med indtastet information" + "\"" + database.superheros + "\"" );
     }
     public void retSuperhelt() {
 
         System.out.println("Søg efter superhelt som du vil rette: ");
-        String nytSuperHelteNavn = ui.getScanString();
+
         for (int i = 0; i < database.getSuperheros().size(); i++) {
-            database.getSuperheros().get(i).setAliasNavn(nytSuperHelteNavn);
-
+            //database.getSuperheros().get(i).setAliasNavn(nytAliasNavn);
+            System.out.println(i+1 +":" + database.superheros.get(i));
         }
-        System.out.println(database.getSuperheros());
+        System.out.println("Indtast nr på den superhelt du ønsker redigeres: ");
+        int nr = ui.getScanInt();
+        ui.getScanInt();
 
+        Superhero redigerSuperHero = database.superheros.get(nr-1);
+        System.out.println("Rediger superhero: " +redigerSuperHero);
+
+        System.out.println("Rediger data og tryk ENTER, hvis du ikke ønsker at redigere, så tryk ENTER: ");
+        System.out.println("AliasNavn: " + redigerSuperHero.getAliasNavn());
+        String nytAliasNavn = ui.getScanString();
+        if (!ui.getScanString().isEmpty())
+            redigerSuperHero.setAliasNavn(nytAliasNavn);
+
+        System.out.println("Supernavn: " + redigerSuperHero.getSuperNavn());
+        String nytSuperNavn = ui.getScanString();
+        if (!ui.getScanString().isEmpty());
+        redigerSuperHero.setSuperNavn(nytSuperNavn);
+
+        System.out.println("Superkraft: " + redigerSuperHero.getSuperkraft());
+        String nySuperkraft = ui.getScanString();
+        if (!ui.getScanString().isEmpty());
+        redigerSuperHero.setSuperkraft(nySuperkraft);
+
+        System.out.println("Menneske eller ej: " + redigerSuperHero.getErMenneske());
+        String nyErMenneske = ui.getScanString();
+        if (!ui.getScanString().isEmpty());
+        redigerSuperHero.setErMenneske(Boolean.parseBoolean(nyErMenneske));
+
+        System.out.println("Oprindelsesår: ");
+        String nyOprindelsesår = ui.getScanString();
+        if (!ui.getScanString().isEmpty());
+        redigerSuperHero.setOprindelsesÅr(Integer.parseInt(nyOprindelsesår));
+
+        System.out.println("Styrke: " + redigerSuperHero.getStyrke());
+        String nyStyrke = ui.getScanString();
+        if (!ui.getScanString().isEmpty());
+        redigerSuperHero.setStyrke(Double.parseDouble(nyStyrke));
+        }
     }
-}
+
 
     /*public int tal() {
         while (!ui.getScanInt()) {

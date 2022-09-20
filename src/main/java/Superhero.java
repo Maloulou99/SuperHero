@@ -49,6 +49,12 @@ public class Superhero {
     public void setStyrke(double styrke){
         this.styrke = styrke;
     }
+    public boolean getErMenneske(){
+        return erMenneske;
+    }
+    public void setErMenneske(boolean menneske){
+        this.erMenneske = menneske;
+    }
 
     @Override
     public String toString() {
