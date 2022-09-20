@@ -9,6 +9,7 @@ public class Database {
     public void tilføjSuperhelt(String aliasNavn, String superNavn, String superkraft, boolean erMenneske, int oprindelsesÅr, double styrke) {
         Superhero superheroVærdi = new Superhero(aliasNavn, superNavn, superkraft, erMenneske, oprindelsesÅr, styrke);
         superheros.add(superheroVærdi);
+
     }
 
     public ArrayList<Superhero> getSuperheros() {
@@ -17,17 +18,21 @@ public class Database {
 
     public Superhero søgSuperHero(String navn) {
         for (int n = 0; n < superheros.size(); n++) {
-            if (superheros.get(n).getSuperNavn().equals(navn)); {
+            if (superheros.get(n).getSuperNavn().equals(navn)) ;
+            {
                 return superheros.get(n);
             }
         }
         return null;
     }
-    /*public int setretSuperHero(){
-        for(int i=0; i<superheros.size(); i++){
-            System.out.println(i+1 + ":" + superheros.get(i));
-        }*/
+
+    void setretSuperHero() {
+        for (int i = 0; i < superheros.size(); i++) {
+            System.out.println(i + 1 + ":" + superheros.get(i));
+        }
+
     }
+}
 
 
 //TODO Søge efter ooprettede superhelte som bliver listet i antal 1,2,3 osv..
