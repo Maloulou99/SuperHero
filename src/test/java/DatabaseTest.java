@@ -30,7 +30,7 @@ class DatabaseTest {
     assertEquals(præcisAliasNavn, s1.getAliasNavn());
     assertEquals(præcisSuperNavn, s1.getSuperNavn());
     }
-    @Test //Vi laver en test som skal gå i fejl
+    @Test //Vi laver en test, som skal gå i fejl
     void testFejlFindeSuper(){
         String præcisAliasNavnFejl = "Mango";
         assertEquals(præcisAliasNavnFejl, s1.getAliasNavn());
