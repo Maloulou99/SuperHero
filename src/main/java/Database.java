@@ -26,6 +26,10 @@ public class Database {
         return null;
     }
 
+    public int getSize(){
+        return superheros.size();
+}
+
 }
 
 
