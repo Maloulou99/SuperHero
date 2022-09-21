@@ -15,9 +15,6 @@ public class Superhero {
         this.oprindelsesÅr = oprindelsesÅr;
         this.styrke = styrke;
     }
-    public Superhero(){
-
-    }
 
     public String getAliasNavn() {
     return aliasNavn;

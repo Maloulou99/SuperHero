@@ -14,7 +14,7 @@ public class UI {
         return readInt;
     }
     public int getScanInt(){
-        return this.getScanInt("Indtastet ikke tilladt, indtast et tal.");
+        return this.getScanInt("Indtastet ikke tilladt, skal indtastes et tal: ");
     }
     public String getScanString(){
       return scanner.nextLine();
