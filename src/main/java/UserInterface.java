@@ -19,6 +19,7 @@ public class UserInterface {
                     2. Udskriv alle superhelte
                     3. Søg efter superhelt
                     4. Ret i din superhelt
+                    5. Slet superhelt
                     9. Afslut    
                         """);
             //Disse metoder opretter vi en scanner til at kunne få input fra brugeren
@@ -55,6 +56,9 @@ public class UserInterface {
                 break;
             case 4:
                 retSuperhelt();
+                break;
+            case 5:
+                sletSuperHelt();
                 break;
             case 9:
                 System.out.println("Superhelte program lukker nu, vi ses snart igen!");
@@ -129,12 +133,12 @@ public class UserInterface {
 
         for (int i = 0; i < database.getSuperheros().size(); i++) {
             //database.getSuperheros().get(i).setAliasNavn(nytAliasNavn);
-            System.out.println(i+1 + ":" + database.superheros.get(i));
+            System.out.println(i + 1 + ":" + database.superheros.get(i));
 
             System.out.println("Indtast nr på den superhelt du ønsker redigeres: ");
             int nr = ui.getScanInt();
 
-            Superhero redigerSuperHero = database.superheros.get(nr-1);
+            Superhero redigerSuperHero = database.superheros.get(nr - 1);
             System.out.println("Rediger superhero: " + redigerSuperHero);
 
             System.out.println("Rediger data og tryk ENTER, hvis du ikke ønsker at redigere, så tryk ENTER: ");
@@ -170,9 +174,41 @@ public class UserInterface {
         }
     }
 
+    //TODO Superhelt bliver printet ud, men programmet stopper efter indtastet ja/nej?
     //Vi skal slette en superhelt, så vi skal bruge hele arraylisten igen
     public void sletSuperHelt() {
+        System.out.println("\tSøge efter superhelt du vil SLETTE: ");
+        String søgeNavn = ui.getScanString();
+
         for (int i = 0; i < database.superheros.size(); i++) {
+            System.out.println(i + 1 + ":\n" + database.getSuperheros().get(i) + "\n");
+        }
+
+        if (søgeNavn != null) {
+            System.out.println("\t Vi har fundet din superhelt: \n"
+                    + søgeNavn);
+        } else if (søgeNavn == null) {
+            System.out.println("\tKunne ikke finde superhelten. \n");
+        }
+
+        System.out.println("\tVil du slette denne superhero? Indtast ja / nej.");
+        String svar = ui.getScanString();
+
+        //Vi spørger brugeren om vi vil slette den indtastede superhelt
+        if (svar.equalsIgnoreCase("ja")) {
+            int n;
+            n = database.getSuperheros().indexOf(søgeNavn);
+
+            database.getSuperheros().remove(n);
+
+        } else if (svar.equalsIgnoreCase("nej")) {
+
+        }
+    }
+}
+
+
+        /*for (int i = 0; i < database.superheros.size(); i++) {
             System.out.println(i + 1 + ":\n" + database.getSuperheros().get(i) + "\n");
         }
         int nr;
@@ -185,9 +221,10 @@ public class UserInterface {
             nr = brugerSvar;
             ui.getScanString();
 
-            if (nr <= database.getSuperheros().size()) { // if = Hvis indtastet tal matcher Supersupeltens plads i Arraylisten = slet
+            if (nr <= database.getSuperheros().size()) { // Metode finder index som passer i arraylisten og sletter
                 database.getSuperheros().remove(nr - 1);
                 System.out.println("\nDen valgte Superhelt er nu slettet!");
+
             } else {
                 System.out.println("Indtastet værdi kan ikke genkendes, prøv igen!"); // else = servicebesked
             }
