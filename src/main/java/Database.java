@@ -17,7 +17,7 @@ public class Database {
     }
 
     public Superhero søgSuperHero(String navn) {
-        for (int n = 0; n < superheros.size() +  n++;) {
+        for (int n = 0; n < superheros.size() + n++;) {
             if (superheros.get(n).getSuperNavn().equals(navn)) ;
             {
                 return superheros.get(n);
@@ -25,10 +25,6 @@ public class Database {
         }
         return null;
     }
-
-    public int getSize(){
-        return superheros.size();
-}
 
 }
 

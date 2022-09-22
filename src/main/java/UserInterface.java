@@ -2,14 +2,14 @@ public class UserInterface {
     //Scanner input;
     UI ui = new UI();
     Database database;
-
+    int brugerSvar = 0;
 
     public UserInterface() {
         database = new Database();
     }
 
     public void startProgram() {
-        int brugerSvar = 0;
+
 
         while (brugerSvar != 9) {
 
@@ -56,6 +56,10 @@ public class UserInterface {
             case 4:
                 retSuperhelt();
                 break;
+            case 9:
+                System.out.println("Superhelte program lukker nu, vi ses snart igen!");
+            default:
+                System.out.println("Værdi ikke tilladt, prøv igen!");
         }
     }
 
@@ -99,7 +103,7 @@ public class UserInterface {
         String søgHelt = ui.getScanString();
         Superhero værdi = database.søgSuperHero(søgHelt);
         System.out.println("Din superhelt er fundet i databasen: ");
-        if (værdi == null){
+        if (værdi == null) {
             System.out.println("Superhelten findes ikke i databasen");
         }
     }
@@ -117,18 +121,20 @@ public class UserInterface {
     }
 
     //TODO Skal tastes ENTER to gange for at gå videre, det skal rettes?!
+    //TODO Kommer kun den første indtastede superhelt frem
+    //TODO Programmet afslutter efter alle rettelser er lavet
     public void retSuperhelt() {
 
         System.out.println("Søg efter superhelt som du vil rette: ");
 
         for (int i = 0; i < database.getSuperheros().size(); i++) {
             //database.getSuperheros().get(i).setAliasNavn(nytAliasNavn);
-            System.out.println(i++ + ":" + database.superheros.get(i));
+            System.out.println(i+1 + ":" + database.superheros.get(i));
 
             System.out.println("Indtast nr på den superhelt du ønsker redigeres: ");
             int nr = ui.getScanInt();
 
-            Superhero redigerSuperHero = database.superheros.get(nr - 1);
+            Superhero redigerSuperHero = database.superheros.get(nr-1);
             System.out.println("Rediger superhero: " + redigerSuperHero);
 
             System.out.println("Rediger data og tryk ENTER, hvis du ikke ønsker at redigere, så tryk ENTER: ");
@@ -163,18 +169,38 @@ public class UserInterface {
             redigerSuperHero.setStyrke(Double.parseDouble(nyStyrke));
         }
     }
-}
 
-
-    /*public int tal() {
-        while (!ui.getScanInt()) {
-            String SH = ui.getScanString();
-            System.out.println("Er ikke en gyldig værdi " + SH + "det skal være et tal, indtast venligst igen: ");
+    //Vi skal slette en superhelt, så vi skal bruge hele arraylisten igen
+    public void sletSuperHelt() {
+        for (int i = 0; i < database.superheros.size(); i++) {
+            System.out.println(i + 1 + ":\n" + database.getSuperheros().get(i) + "\n");
         }
-        int result = ui.getScanInt();
-        return result;
+        int nr;
+
+        do {
+            System.out.println();
+            System.out.print("Indtast nr. og tryk ENTER for at slette: ");
+
+
+            nr = brugerSvar;
+            ui.getScanString();
+
+            if (nr <= database.getSuperheros().size()) { // if = Hvis indtastet tal matcher Supersupeltens plads i Arraylisten = slet
+                database.getSuperheros().remove(nr - 1);
+                System.out.println("\nDen valgte Superhelt er nu slettet!");
+            } else {
+                System.out.println("Indtastet værdi kan ikke genkendes, prøv igen!"); // else = servicebesked
+            }
+
+        } while (nr > database.getSuperheros().size());
+
     }
 }
+
+
+
+
+
 
 
         //TODO en anden metode at sige til bruger, værdi findes ikke
