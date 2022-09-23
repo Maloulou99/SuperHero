@@ -22,6 +22,7 @@ class DatabaseTest {
     int præcisLængde = 3;
     helte.tilføjSuperhelt("Mango", "Super Mango", "Spisende", false, 1756, 34.567);
     assertEquals(præcisLængde,helte.getSuperheros().size());
+
     }
     @Test
     void testFindSuperHero(){

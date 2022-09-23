@@ -43,22 +43,17 @@ public class UserInterface {
     }*/
 
     // switch menu
-    public void brugerSvarMenu(int brugersvar) {
-        switch (brugersvar) {
-            case 1:
-                indtastSuperhelt();
+    public void brugerSvarMenu(int brugerSvar) {
+        switch (brugerSvar) {
+            case 1: indtastSuperhelt();
                 break;
-            case 2:
-                udskrivSuperhelt();
+            case 2: udskrivSuperhelt();
                 break;
-            case 3:
-                findSuperhelt();
+            case 3: findSuperhelt();
                 break;
-            case 4:
-                retSuperhelt();
+            case 4: retSuperhelt();
                 break;
-            case 5:
-                sletSuperHelt();
+            case 5: sletSuperHelt();
                 break;
             case 9:
                 System.out.println("Superhelte program lukker nu, vi ses snart igen!");
@@ -101,18 +96,6 @@ public class UserInterface {
         database.tilføjSuperhelt(aliasNavn, superNavn, superkraft, menneske, oprindelsesÅr, styrke);
     }
 
-    public void findSuperhelt() {
-
-        System.out.println("Indtast navnet på din superhelt, som du søger efter her: ");
-        String søgHelt = ui.getScanString();
-        Superhero værdi = database.søgSuperHero(søgHelt);
-        System.out.println("Din superhelt er fundet i databasen: ");
-        if (værdi == null) {
-            System.out.println("Superhelten findes ikke i databasen");
-        }
-    }
-
-
     public void udskrivSuperhelt() {
 
         System.out.println("\nSuperheltens informationer: ");
@@ -123,7 +106,15 @@ public class UserInterface {
         else
             System.out.println("Der findes ingen superhelte med indtastet information" + "\"" + database.superheros + "\"");
     }
-
+    public void findSuperhelt() {
+        System.out.println("Indtast navnet på din superhelt, som du søger efter her: ");
+        String søgHelt = ui.getScanString();
+        Superhero værdi = database.søgSuperHero(søgHelt);
+        System.out.println("Din superhelt er fundet i databasen: ");
+        if (værdi == null) {
+            System.out.println("Superhelten findes ikke i databasen");
+        }
+    }
     //TODO Skal tastes ENTER to gange for at gå videre, det skal rettes?!
     //TODO Kommer kun den første indtastede superhelt frem
     //TODO Programmet afslutter efter alle rettelser er lavet
@@ -197,7 +188,7 @@ public class UserInterface {
         //Vi spørger brugeren om vi vil slette den indtastede superhelt
         if (svar.equalsIgnoreCase("ja")) {
             int n;
-            n = database.getSuperheros().indexOf(søgeNavn);
+            n = database.getSuperheros().indexOf(database.søgSuperHero(søgeNavn));
 
             database.getSuperheros().remove(n);
 
